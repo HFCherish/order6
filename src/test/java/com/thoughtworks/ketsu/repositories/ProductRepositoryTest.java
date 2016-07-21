@@ -41,6 +41,6 @@ public class ProductRepositoryTest {
         List<Product> fetched = productRepository.findAll();
 
         assertThat(fetched.size(), is(1));
-
+        assertThat(fetched.get(0).getId(), is(product.getId()));
     }
 }

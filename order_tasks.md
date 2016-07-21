@@ -67,7 +67,7 @@
 34. get payment of some order
 	32. should return 200 when get payment (resourc.get) --3 :: 6
 	35. should the response body include right pay_type, amount, order_uri & payment uri (resource.get) --9 :: 7
-	34. should the response body include right creating date (resoure.get, mapper-findByOrderId, record) --4
+	34. should the response body include right creating date (resoure.get, mapper-findByOrderId, record) --4 :: 4
 	4. should return 404 when no payment in db --1
 
 #databases

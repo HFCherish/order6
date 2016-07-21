@@ -11,6 +11,7 @@
         phone,
         created_at,
         product_id,
-        quantity
+        quantity,
+        amount
     </sql>
 </mapper>

@@ -28,6 +28,7 @@ public class OrderItem implements Record{
         return new HashMap<String, Object>() {{
             put("product_id", getProductId());
             put("quantity", getQuantity());
+            put("amount", getAmount());
         }};
     }
 

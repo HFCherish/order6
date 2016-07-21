@@ -26,6 +26,7 @@
         <collection property="orderItems" ofType="com.thoughtworks.ketsu.domain.user.OrderItem">
             <result property="productId" column="product_id"/>
             <result property="quantity" column="quantity"/>
+            <result property="amount" column="amount"/>
         </collection>
     </resultMap>
 

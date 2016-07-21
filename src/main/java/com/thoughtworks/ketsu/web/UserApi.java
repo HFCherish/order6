@@ -1,37 +1,27 @@
 package com.thoughtworks.ketsu.web;
 
 import com.thoughtworks.ketsu.domain.user.User;
-import com.thoughtworks.ketsu.domain.user.UserRepository;
-import com.thoughtworks.ketsu.web.jersey.Routes;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import java.util.Map;
 
-@Path("users")
 public class UserApi {
-    @Context
-    UserRepository userRepository;
+    private User user;
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response register(Map userInfo,
-                             @Context Routes routes) {
-        if (userInfo.get("name") == null || !userInfo.get("name").toString().matches("^[a-zA-Z\\d]+$"))
-            throw new IllegalArgumentException("must contains name composed of letters and numbers.");
-
-        userRepository.save(userInfo);
-        return Response.created(routes.userUrl(Long.valueOf(userInfo.get("id").toString()))).build();
+    public UserApi(User user) {
+        this.user = user;
     }
 
     @GET
-    @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public User getUser(@PathParam("id") long id) {
-        return userRepository.findById(id)
-                .map(user -> user)
-                .orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND));
+    public User getUser() {
+        return user;
+    }
+
+    @Path("orders")
+    public OrdersApi toOrders() {
+        return new OrdersApi(user);
     }
 }

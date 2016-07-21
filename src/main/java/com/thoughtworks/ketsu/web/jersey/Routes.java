@@ -14,4 +14,8 @@ public class Routes {
     public URI productUrl(long productId) {
         return URI.create(baseUri + "products/" + productId);
     }
+
+    public URI userUrl(long userId) {
+        return URI.create(baseUri + "users");
+    }
 }

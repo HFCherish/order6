@@ -25,9 +25,11 @@ public class ProductRepositoryTest {
         Map info = productJsonForTest();
 
         productRepository.save(info);
-        Optional<Product> fetched = productRepository.findById(89l);
+        Long id = Long.valueOf(info.get("id").toString());
+        Optional<Product> fetched = productRepository.findById(id);
 
         assertThat(fetched.isPresent(), is(true));
+        assertThat(fetched.get().getId(), is(id));
     }
 
 

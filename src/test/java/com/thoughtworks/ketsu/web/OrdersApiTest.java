@@ -1,6 +1,5 @@
 package com.thoughtworks.ketsu.web;
 
-import com.google.common.collect.Ordering;
 import com.thoughtworks.ketsu.domain.product.Product;
 import com.thoughtworks.ketsu.domain.product.ProductRepository;
 import com.thoughtworks.ketsu.domain.user.Order;
@@ -16,9 +15,6 @@ import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
-
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

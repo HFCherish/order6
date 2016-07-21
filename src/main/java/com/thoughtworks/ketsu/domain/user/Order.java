@@ -1,9 +1,11 @@
 package com.thoughtworks.ketsu.domain.user;
 
+import com.thoughtworks.ketsu.infrastructure.mybatis.mappers.OrderMapper;
 import com.thoughtworks.ketsu.infrastructure.records.Record;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 import org.joda.time.DateTime;
 
+import javax.inject.Inject;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -15,6 +17,9 @@ public class Order implements Record {
     private String phone;
     private List<OrderItem> orderItems;
     private DateTime createdAt;
+
+    @Inject
+    OrderMapper orderMapper;
 
     public long getUserId() {
         return userId;
@@ -72,11 +77,11 @@ public class Order implements Record {
     }
 
     public void pay(Map payInfo) {
-
+        orderMapper.pay(payInfo, getId());
     }
 
     public Optional<Payment> getPayment() {
 
-        return Optional.ofNullable(new Payment());
+        return Optional.ofNullable(orderMapper.findPayment(getId()));
     }
 }

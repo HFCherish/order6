@@ -1,6 +1,7 @@
 package com.thoughtworks.ketsu.infrastructure.mybatis.mappers;
 
 import com.thoughtworks.ketsu.domain.user.Order;
+import com.thoughtworks.ketsu.domain.user.Payment;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -12,4 +13,8 @@ public interface OrderMapper {
     Order findById(@Param("id") long id);
 
     List<Order> findAll(@Param("userId") long userId);
+
+    Payment findPayment(@Param("orderId") long orderId);
+
+    void pay(@Param("info") Map payInfo, @Param("orderId") long id);
 }

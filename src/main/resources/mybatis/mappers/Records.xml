@@ -16,6 +16,12 @@
         <result property="name" column="name"/>
     </resultMap>
 
+    <resultMap id="payment" type="com.thoughtworks.ketsu.domain.user.Payment">
+        <result property="orderId" column="order_id"/>
+        <result property="amount" column="amount"/>
+        <result property="type" column="type"/>
+    </resultMap>
+
     <resultMap id="order" type="com.thoughtworks.ketsu.domain.user.Order">
         <id property="id" column="id"/>
         <result property="name" column="name"/>

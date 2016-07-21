@@ -60,18 +60,24 @@ public class PaymentApiTest extends ApiSupport {
 
     @Test
     public void should_get_payment() {
-        Map<String, Object> info = paymentJsonForTest();
-        order.pay(info);
-        Payment payment = order.getPayment().get();
+        Payment payment = preparePayment(order);
 
         Response response = get(paymentBaseUrl);
 
         assertThat(response.getStatus(), is(200));
         Map fetchedInfo = response.readEntity(Map.class);
-        assertThat(fetchedInfo.get("pay_type"), is(info.get("pay_type")));
-        assertThat(fetchedInfo.get("amount"), is(info.get("amount")));
+        assertThat(fetchedInfo.get("pay_type"), is(payment.getType().name()));
+        assertThat((double)fetchedInfo.get("amount"), is(payment.getAmount()));
         assertThat(fetchedInfo.get("order_uri"), is("users/" + order.getUserId() + "/orders/" + order.getId()));
         assertThat(fetchedInfo.get("uri"), is(paymentBaseUrl));
         assertThat(new DateTime(fetchedInfo.get("created_at")), is(payment.getCreatedAt()));
+    }
+
+    @Test
+    public void should_404_when_get_not_pay() {
+        Response response = get(paymentBaseUrl);
+
+        assertThat(response.getStatus(), is(404));
+
     }
 }

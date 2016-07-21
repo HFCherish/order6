@@ -3,6 +3,7 @@ package com.thoughtworks.ketsu.support;
 import com.thoughtworks.ketsu.domain.product.Product;
 import com.thoughtworks.ketsu.domain.product.ProductRepository;
 import com.thoughtworks.ketsu.domain.user.Order;
+import com.thoughtworks.ketsu.domain.user.Payment;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.domain.user.UserRepository;
 
@@ -20,6 +21,12 @@ public class TestHelper {
             put("pay_type", "CASH");
             put("amount", 678.9);
         }};
+    }
+
+    public static Payment preparePayment(Order order) {
+        Map<String, Object> info = paymentJsonForTest();
+        order.pay(info);
+        return order.getPayment().get();
     }
 
     public static Map<String, Object> orderJsonForTest(long prodId) {

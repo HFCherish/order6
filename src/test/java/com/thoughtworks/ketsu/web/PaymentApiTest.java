@@ -65,6 +65,10 @@ public class PaymentApiTest extends ApiSupport {
         Response response = get(paymentBaseUrl);
 
         assertThat(response.getStatus(), is(200));
-
+        Map fetchedInfo = response.readEntity(Map.class);
+        assertThat(fetchedInfo.get("pay_type"), is(info.get("pay_type")));
+        assertThat(fetchedInfo.get("amount"), is(info.get("amount")));
+        assertThat(fetchedInfo.get("order_uri"), is("users/" + order.getUserId() + "/orders/" + order.getId()));
+        assertThat(fetchedInfo.get("uri"), is(paymentBaseUrl));
     }
 }

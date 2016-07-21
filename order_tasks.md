@@ -57,7 +57,7 @@
 	29. should have tried to fetch all orders from database and should get one order when there's one order in database (repo.findAll) --6
 	31. should the order's id is the same as the created one (resourc.post, repo.save, mapper, database, record; repo.findAll, mapper) --2 :: 12
 	3. --------------------------------------------------
-	29. should the response body contain at least one order info and right uri, name, address, phone, total\_price info (resource.get, record) --2
+	29. should the response body contain at least one order info and right uri, name, address, phone, total\_price info (resource.get, record) --2 :: 2
 29. create payment
 	30. should return 201 when pay (resource.post) --6
 	1. should 400 when input doesn't contain pay_type, amount -- 3

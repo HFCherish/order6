@@ -21,6 +21,7 @@
         <result property="name" column="name"/>
         <result property="address" column="address"/>
         <result property="phone" column="phone"/>
+        <result property="userId" column="user_id"/>
     </resultMap>
 
 </mapper>

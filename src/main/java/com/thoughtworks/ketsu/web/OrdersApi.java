@@ -5,10 +5,7 @@ import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 import com.thoughtworks.ketsu.web.validators.OrderValidator;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -35,7 +32,9 @@ public class OrdersApi {
     }
 
     @Path("{id}")
-    public OrderApi getOrder(@PathParam("id") String id) {
-        return new OrderApi(new Order());
+    public OrderApi getOrder(@PathParam("id") long id) {
+        return user.getOrderById(id)
+                .map(OrderApi::new)
+                .orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND));
     }
 }

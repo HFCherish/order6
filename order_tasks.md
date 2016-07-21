@@ -45,7 +45,7 @@
 	1. should return 400 when the order item id is invalid --5 :: 5 (1h stucked)
 27. get some order of some user
 	28. should return 200 when review some order of some user (resource.get) --6 :: 6
-	29. should the response body contain right uri info (resource.get) --8
+	29. should the response body contain right uri info (resource.get) --8 :: 4
  	20. should the response body contain right name, address, phone,  created\_at info (resource.get, record) --4
  	21. should the response body contain at least one order_item info (resource.get, record) --18
  	22. should the order\_item contain right product_id, quantity, amount info (resource.get, record) --5

@@ -20,6 +20,6 @@ public class Routes {
     }
 
     public URI orderUrl(long userId, long orderId) {
-        return URI.create(baseUri + "users/" + userId + "/orders");
+        return URI.create(baseUri + "users/" + userId + "/orders/" + orderId);
     }
 }

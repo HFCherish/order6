@@ -39,7 +39,7 @@
 	20. should have tried to save the order info into database and should able to get the order after created order (repo.findById) --6 :: 5
 	22. should the order's id is the same as the created one (resourc.post, repo.save, mapper, database, record; repo.findById, mapper) --10 :: 11
 	3. --------------------------------------------------
-	4. should the creation uri contains order id in header location -- 1
+	4. should the creation uri contains order id in header location -- 1 :: 2
 	2. should return 400 when the input doesn't contain name, address, phone --4
 	4. should return 400 when the order contains 0 order item or the item doesn't exist, or the item's product_id, quantity is null --4
 27. get some order of some user

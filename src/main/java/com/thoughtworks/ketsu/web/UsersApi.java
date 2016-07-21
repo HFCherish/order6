@@ -24,6 +24,6 @@ public class UsersApi {
             throw new IllegalArgumentException("must contains name composed of letters and numbers.");
 
         userRepository.save(userInfo);
-        return Response.created(routes.userUrl(809l)).build();
+        return Response.created(routes.userUrl(Long.valueOf(userInfo.get("id").toString()))).build();
     }
 }

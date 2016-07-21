@@ -1,6 +1,5 @@
 package com.thoughtworks.ketsu.repositories;
 
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.domain.user.UserRepository;
 import com.thoughtworks.ketsu.support.ApiTestRunner;
@@ -26,9 +25,11 @@ public class UserRepositoryTest {
         Map info = userJsonForTest(USER_NAME);
 
         userRepository.save(info);
-        Optional<User> fetched = userRepository.findById(789l);
+        Long id = Long.valueOf(info.get("id").toString());
+        Optional<User> fetched = userRepository.findById(id);
 
         assertThat(fetched.isPresent(), is(true));
+        assertThat(fetched.get().getId(), is(id));
     }
 
 

@@ -16,6 +16,6 @@ public class Routes {
     }
 
     public URI userUrl(long userId) {
-        return URI.create(baseUri + "users");
+        return URI.create(baseUri + "users/" + userId);
     }
 }

@@ -62,7 +62,7 @@
 	30. should return 201 when pay (resource.post) --6 :: 7
 	1. should 400 when input doesn't contain pay_type, amount -- 3 :: 2
 	3. --------------------------------------------------
-	31. should try to save the payment info into database and should able to get that payment after pay (resourc.post, repo.findByOrderId) --5
+	31. should try to save the payment info into database and should able to get that payment after pay (resourc.post, repo.findByOrderId) --5 :: 3
 	32. should the order id of that payment is as expected (resourc.post, repo.save, mapper, database, record; repo.findByOrderId, mapper) --11
 34. get payment of some order
 	32. should return 200 when get payment (resourc.get) --3

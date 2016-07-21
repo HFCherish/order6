@@ -70,4 +70,13 @@ public class Order implements Record {
         }
         return total;
     }
+
+    public void pay(Map payInfo) {
+
+    }
+
+    public Optional<Payment> getPayment() {
+
+        return Optional.ofNullable(new Payment());
+    }
 }

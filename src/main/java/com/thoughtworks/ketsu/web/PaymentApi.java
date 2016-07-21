@@ -22,6 +22,7 @@ public class PaymentApi {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response pay(Map payInfo) {
         new NotNullValidator().validate(Arrays.asList("pay_type", "amount"), payInfo);
+        order.pay(payInfo);
         return Response.created(URI.create("")).build();
     }
 }

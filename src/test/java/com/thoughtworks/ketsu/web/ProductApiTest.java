@@ -7,6 +7,8 @@ import org.junit.runner.RunWith;
 
 import javax.ws.rs.core.Response;
 
+import java.util.Map;
+
 import static com.thoughtworks.ketsu.support.TestHelper.productJsonForTest;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -22,5 +24,18 @@ public class ProductApiTest extends ApiSupport {
 
         assertThat(response.getStatus(), is(201));
         assertThat(response.getLocation().toString(), containsString(productBaseUrl));
+    }
+
+    @Test
+    public void should_400_when_create_product_incomplete() {
+        Map prodInfo = productJsonForTest();
+
+        //name empty
+        prodInfo.remove("name");
+
+        Response response = post(productBaseUrl, prodInfo);
+
+        assertThat(response.getStatus(), is(400));
+
     }
 }

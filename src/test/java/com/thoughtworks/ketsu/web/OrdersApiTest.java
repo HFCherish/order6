@@ -17,6 +17,7 @@ import javax.ws.rs.core.Response;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.thoughtworks.ketsu.support.TestHelper.*;
@@ -102,6 +103,7 @@ public class OrdersApiTest extends ApiSupport {
         assertThat(orderInfo.get("phone"), is(order.getPhone()));
         assertThat(new DateTime(orderInfo.get("created_at")), is(order.getCreatedAt()));
 
-
+        List items = (List)orderInfo.get("order_items");
+        assertThat(items.size(), is(1));
     }
 }

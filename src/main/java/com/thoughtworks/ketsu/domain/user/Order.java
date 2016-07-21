@@ -4,9 +4,7 @@ import com.thoughtworks.ketsu.infrastructure.records.Record;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 import org.joda.time.DateTime;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Order implements Record{
     private long id;
@@ -43,12 +41,17 @@ public class Order implements Record{
 
     @Override
     public Map<String, Object> toRefJson(Routes routes) {
+        List items = new ArrayList<>();
+        for(OrderItem item: orderItems) {
+            items.add(item.toJson(routes));
+        }
         return new HashMap<String, Object>() {{
             put("uri", routes.orderUrl(getUserId(), getId()));
             put("name", getName());
             put("address", getAddress());
             put("phone", getPhone());
             put("created_at", getCreatedAt());
+            put("order_items", items);
         }};
     }
 

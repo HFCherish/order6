@@ -6,6 +6,7 @@ import com.thoughtworks.ketsu.domain.product.ProductRepository;
 import com.thoughtworks.ketsu.domain.user.UserRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepositoryImpl;
 import com.thoughtworks.ketsu.infrastructure.repositories.UserRepositoryImpl;
+import com.thoughtworks.ketsu.web.validators.OrderValidator;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.*;
 import org.apache.ibatis.type.TypeHandler;
@@ -55,6 +56,7 @@ public class Models extends AbstractModule {
         bindPersistence();
         bind(ProductRepository.class).to(ProductRepositoryImpl.class);
         bind(UserRepository.class).to(UserRepositoryImpl.class);
+        bind(OrderValidator.class);
     }
 
     private void bindPersistence() {

@@ -41,7 +41,7 @@ public class OrderOperationTest {
 
     @Test
     public void should_save_and_get_order() {
-        Map info = orderJsonForTest(product);
+        Map info = orderJsonForTest(product.getId());
 
         user.placeOrder(info);
         Long id = Long.valueOf(info.get("id").toString());

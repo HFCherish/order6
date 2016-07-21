@@ -2,6 +2,7 @@ package com.thoughtworks.ketsu.support;
 
 import com.thoughtworks.ketsu.domain.product.Product;
 import com.thoughtworks.ketsu.domain.product.ProductRepository;
+import com.thoughtworks.ketsu.domain.user.Order;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.domain.user.UserRepository;
 
@@ -14,16 +15,22 @@ public class TestHelper {
     public static final String USER_NAME = "Petrina";
     public static final String INVALID_USER_NAME = ";'KPK";
 
-    public static Map<String, Object> orderJsonForTest(Product product) {
+    public static Map<String, Object> orderJsonForTest(long prodId) {
         return new HashMap<String, Object>() {{
             put("name", "Imran");
             put("address", "beijing");
             put("phone", "7689");
             put("order_items", Arrays.asList(new HashMap() {{
-                put("product_id", product.getId());
+                put("product_id", prodId);
                 put("quantity", 2);
             }}));
         }};
+    }
+
+    public static Order prepareOrder(Product product, User user) {
+        Map info = orderJsonForTest(product.getId());
+        user.placeOrder(info);
+        return user.getOrderById(Long.valueOf(info.get("id").toString())).get();
     }
 
     public static Map<String, Object> userJsonForTest(String name) {

@@ -42,9 +42,9 @@
 	4. should the creation uri contains order id in header location -- 1 :: 1
 	2. should return 400 when the input doesn't contain name, address, phone --4 :: 5
 	4. should return 400 when the order contains 0 order item or the item doesn't exist, or the item's product_id, quantity is null --4 :: 5
-	1. should return 400 when the order item id is invalid --5 ::
+	1. should return 400 when the order item id is invalid --5 :: 5 (1h stucked)
 27. get some order of some user
-	28. should return 200 when review some order of some user (resource.get) --6
+	28. should return 200 when review some order of some user (resource.get) --6 :: 6
 	29. should the response body contain right uri info (resource.get) --8
  	20. should the response body contain right name, address, phone,  created\_at info (resource.get, record) --4
  	21. should the response body contain at least one order_item info (resource.get, record) --18

@@ -2,6 +2,7 @@ package com.thoughtworks.ketsu.web;
 
 import com.thoughtworks.ketsu.domain.product.Product;
 import com.thoughtworks.ketsu.domain.product.ProductRepository;
+import com.thoughtworks.ketsu.domain.user.Order;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.domain.user.UserRepository;
 import com.thoughtworks.ketsu.support.ApiSupport;
@@ -17,9 +18,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.thoughtworks.ketsu.support.TestHelper.orderJsonForTest;
-import static com.thoughtworks.ketsu.support.TestHelper.prepareProduct;
-import static com.thoughtworks.ketsu.support.TestHelper.prepareUser;
+import static com.thoughtworks.ketsu.support.TestHelper.*;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -48,7 +47,7 @@ public class OrdersApiTest extends ApiSupport {
 
     @Test
     public void should_create_order_success() {
-        Response response = post(orderBaseUrl, orderJsonForTest(product));
+        Response response = post(orderBaseUrl, orderJsonForTest(product.getId()));
 
         assertThat(response.getStatus(), is(201));
         assertThat(response.getLocation().toString(), containsString(orderBaseUrl));
@@ -58,7 +57,7 @@ public class OrdersApiTest extends ApiSupport {
 
     @Test
     public void should_400_when_create_order_given_incomplete_base_info() {
-        Map info = orderJsonForTest(product);
+        Map info = orderJsonForTest(product.getId());
         //name empty
         info.remove("name");
 
@@ -68,8 +67,8 @@ public class OrdersApiTest extends ApiSupport {
     }
 
     @Test
-    public void should_400_when_create_order_given_invalid_items_info() {
-        Map info = orderJsonForTest(product);
+    public void should_400_when_create_order_given_incomplete_items_info() {
+        Map info = orderJsonForTest(product.getId());
         //name empty
         info.remove("order_items");
 
@@ -78,4 +77,23 @@ public class OrdersApiTest extends ApiSupport {
         assertThat(response.getStatus(), is(400));
     }
 
+    @Test
+    public void should_400_when_create_order_given_invalid_items_id() {
+        Map info = orderJsonForTest(product.getId() + 1);
+
+        Response response = post(orderBaseUrl, info);
+
+        assertThat(response.getStatus(), is(400));
+    }
+
+    @Test
+    public void should_get_order_success() {
+        Order order = prepareOrder(product, user);
+        String getOneUrl = orderBaseUrl + "/" + order.getId();
+
+        Response response = get(getOneUrl);
+
+        assertThat(response.getStatus(), is(200));
+
+    }
 }

@@ -1,5 +1,6 @@
 package com.thoughtworks.ketsu.web;
 
+import com.thoughtworks.ketsu.domain.product.Product;
 import com.thoughtworks.ketsu.domain.product.ProductRepository;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 import com.thoughtworks.ketsu.web.validators.NotNullValidator;
@@ -25,6 +26,7 @@ public class ProductApi {
                            @Context Routes routes) {
         new NotNullValidator().validate(Arrays.asList("name", "description", "price"), prodInfo);
         productRepository.save(prodInfo);
-        return Response.created(routes.productUrl(798l)).build();
+
+        return Response.created(routes.productUrl(Long.valueOf(prodInfo.get("id").toString()))).build();
     }
 }

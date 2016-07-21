@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 import java.util.Map;
 
 @Path("users")
-public class UsersApi {
+public class UserApi {
     @Context
     UserRepository userRepository;
 

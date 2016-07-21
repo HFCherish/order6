@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response;
 import static com.thoughtworks.ketsu.support.TestHelper.orderJsonForTest;
 import static com.thoughtworks.ketsu.support.TestHelper.prepareProduct;
 import static com.thoughtworks.ketsu.support.TestHelper.prepareUser;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -46,6 +47,7 @@ public class OrderApiTest extends ApiSupport {
         Response response = post(orderBaseUrl, orderJsonForTest(product));
 
         assertThat(response.getStatus(), is(201));
+        assertThat(response.getLocation().toString(), containsString(orderBaseUrl));
 
     }
 }

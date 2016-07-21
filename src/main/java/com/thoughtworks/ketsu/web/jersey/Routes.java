@@ -18,4 +18,8 @@ public class Routes {
     public URI userUrl(long userId) {
         return URI.create(baseUri + "users/" + userId);
     }
+
+    public URI orderUrl(long userId, long orderId) {
+        return URI.create(baseUri + "users/" + userId + "/orders");
+    }
 }

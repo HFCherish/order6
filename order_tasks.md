@@ -21,7 +21,7 @@
 	2. should the response body contains at least  one item info and contains right uri, name, description, price info (resource.get, record) --3 :: 2
 11. user register
 	11. should return 201 when register a new user (resource.post) --4 :: 4
-	12. should return 400 when the registered name is not composed of letters and numbers, at least one (resource.post) -- 9
+	12. should return 400 when the registered name is null or not composed of letters and numbers, at least one (resource.post) -- 9 :: 4
 	13. should include creation uri in header location (resource.post) --5
 	3. --------------------------------------------------
 	14. should have tried to save the user info into database and should able to get a user after registered (repo.findById) --6

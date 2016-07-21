@@ -13,6 +13,8 @@ public class UsersApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response register(Map userInfo) {
+        if (userInfo.get("name") == null || !userInfo.get("name").toString().matches("^[a-zA-Z\\d]+$"))
+            throw new IllegalArgumentException("must contains name composed of letters and numbers.");
         return Response.created(URI.create("")).build();
     }
 }

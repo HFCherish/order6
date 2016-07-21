@@ -5,6 +5,7 @@ import com.thoughtworks.ketsu.web.jersey.Routes;
 import org.joda.time.DateTime;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Order implements Record {
     private long id;
@@ -41,10 +42,7 @@ public class Order implements Record {
 
     @Override
     public Map<String, Object> toRefJson(Routes routes) {
-        List items = new ArrayList<>();
-        for (OrderItem item : orderItems) {
-            items.add(item.toJson(routes));
-        }
+        List items = orderItems.stream().map(item -> item.toJson(routes)).collect(Collectors.toList());
         return new HashMap<String, Object>() {{
             put("uri", routes.orderUrl(getUserId(), getId()));
             put("name", getName());

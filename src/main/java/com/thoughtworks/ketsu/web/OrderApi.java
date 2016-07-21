@@ -1,6 +1,5 @@
 package com.thoughtworks.ketsu.web;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import com.thoughtworks.ketsu.domain.user.Order;
 
 import javax.ws.rs.GET;

@@ -12,12 +12,11 @@ import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.thoughtworks.ketsu.support.TestHelper.orderJsonForTest;
-import static com.thoughtworks.ketsu.support.TestHelper.prepareProduct;
-import static com.thoughtworks.ketsu.support.TestHelper.prepareUser;
+import static com.thoughtworks.ketsu.support.TestHelper.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -50,5 +49,15 @@ public class OrderOperationTest {
         assertThat(fethced.isPresent(), is(true));
         assertThat(fethced.get().getId(), is(id));
 
+    }
+
+    @Test
+    public void should_get_all_orders() {
+        Order order = prepareOrder(product, user);
+
+        List<Order> fetched = user.getAllOrders();
+
+        assertThat(fetched.size(), is(1));
+        assertThat(fetched.get(0).getId(), is(order.getId()));
     }
 }

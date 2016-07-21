@@ -23,4 +23,12 @@
         WHERE id = #{id}
     </select>
 
+    <select id="findAll" resultMap="records.order">
+        SELECT
+        <include refid="columns.order"/>
+        FROM orders
+        LEFT JOIN orderItems ON id = order_id
+        WHERE user_id = #{userId}
+    </select>
+
 </mapper>

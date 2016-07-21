@@ -5,9 +5,7 @@ import com.thoughtworks.ketsu.infrastructure.records.Record;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 
 import javax.inject.Inject;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class User implements Record{
     private long id;
@@ -43,5 +41,9 @@ public class User implements Record{
 
     public Optional<Order> getOrderById(long id) {
         return Optional.ofNullable(orderMapper.findById(id));
+    }
+
+    public List<Order> getAllOrders() {
+        return orderMapper.findAll(getId());
     }
 }

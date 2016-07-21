@@ -1,4 +1,4 @@
-#tasks (8.6h :: 3.95h)
+#tasks (242-3.95h :: )
 2. product creation
 	2. should return 201 when create a product  (resource.post)  --6 :: 5
 	3. should contain creation uri in header location (resource.post) --3 :: 2
@@ -39,9 +39,10 @@
 	20. should have tried to save the order info into database and should able to get the order after created order (repo.findById) --6 :: 5
 	22. should the order's id is the same as the created one (resourc.post, repo.save, mapper, database, record; repo.findById, mapper) --10 :: 11
 	3. --------------------------------------------------
-	4. should the creation uri contains order id in header location -- 1 :: 2
-	2. should return 400 when the input doesn't contain name, address, phone --4
-	4. should return 400 when the order contains 0 order item or the item doesn't exist, or the item's product_id, quantity is null --4
+	4. should the creation uri contains order id in header location -- 1 :: 1
+	2. should return 400 when the input doesn't contain name, address, phone --4 :: 5
+	4. should return 400 when the order contains 0 order item or the item doesn't exist, or the item's product_id, quantity is null --4 :: 5
+	1. should return 400 when the order item id is invalid --5 ::
 27. get some order of some user
 	28. should return 200 when review some order of some user (resource.get) --6
 	29. should the response body contain right uri info (resource.get) --8

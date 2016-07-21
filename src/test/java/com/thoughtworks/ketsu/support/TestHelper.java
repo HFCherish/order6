@@ -23,7 +23,6 @@ public class TestHelper {
                 put("product_id", product.getId());
                 put("quantity", 2);
             }}));
-
         }};
     }
 

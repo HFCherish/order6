@@ -13,7 +13,7 @@
 	3. --------------------------------------------------
 	4. should return 404 when no products in db --1 :: 1
 6. get all products
-	1. should return 200 when get products (resource.get) --2
+	1. should return 200 when get products (resource.get) --2 :: 2
 	3. --------------------------------------------------
 	2. should have tried to search from database and should able to get a least one product if database is not empty (repo.findAll) --3
 	3. should that one product's id are the same as expected (mapper-findAll) --3

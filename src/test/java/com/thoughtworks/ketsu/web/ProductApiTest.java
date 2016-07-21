@@ -72,4 +72,14 @@ public class ProductApiTest extends ApiSupport {
         assertThat(response.getStatus(), is(404));
 
     }
+
+    @Test
+    public void should_get_all_products_succssfully() {
+        Product product = prepareProduct(productRepository);
+
+        Response response = get(productBaseUrl);
+
+        assertThat(response.getStatus(), is(200));
+
+    }
 }

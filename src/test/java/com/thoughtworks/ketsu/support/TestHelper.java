@@ -5,6 +5,7 @@ import com.thoughtworks.ketsu.domain.product.ProductRepository;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.domain.user.UserRepository;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +13,19 @@ public class TestHelper {
 
     public static final String USER_NAME = "Petrina";
     public static final String INVALID_USER_NAME = ";'KPK";
+
+    public static Map<String, Object> orderJsonForTest(Product product) {
+        return new HashMap<String, Object>() {{
+            put("name", "Imran");
+            put("address", "beijing");
+            put("phone", "7689");
+            put("order_items", Arrays.asList(new HashMap() {{
+                put("product_id", product.getId());
+                put("quantity", 2);
+            }}));
+
+        }};
+    }
 
     public static Map<String, Object> userJsonForTest(String name) {
         return new HashMap<String, Object>() {{

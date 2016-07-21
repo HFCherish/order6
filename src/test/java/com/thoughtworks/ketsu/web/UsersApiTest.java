@@ -10,6 +10,8 @@ import org.junit.runner.RunWith;
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
+import java.util.Map;
+
 import static com.thoughtworks.ketsu.support.TestHelper.*;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -47,6 +49,10 @@ public class UsersApiTest extends ApiSupport {
         Response response = get(getOneUrl);
 
         assertThat(response.getStatus(), is(200));
+        Map info = response.readEntity(Map.class);
+        assertThat(info.get("uri"), is(getOneUrl));
+        assertThat(info.get("name"), is(user.getName()));
+        assertThat(Long.valueOf(info.get("id").toString()), is(user.getId()));
 
     }
 }

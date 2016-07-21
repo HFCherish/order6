@@ -30,6 +30,8 @@ public class UsersApi {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public User getUser(@PathParam("id") long id) {
-        return new User();
+        return userRepository.findById(id)
+                .map(user -> user)
+                .orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND));
     }
 }

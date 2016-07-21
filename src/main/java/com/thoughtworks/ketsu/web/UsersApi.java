@@ -1,11 +1,10 @@
 package com.thoughtworks.ketsu.web;
 
+import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.domain.user.UserRepository;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -25,5 +24,12 @@ public class UsersApi {
 
         userRepository.save(userInfo);
         return Response.created(routes.userUrl(Long.valueOf(userInfo.get("id").toString()))).build();
+    }
+
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public User getUser(@PathParam("id") long id) {
+        return new User();
     }
 }

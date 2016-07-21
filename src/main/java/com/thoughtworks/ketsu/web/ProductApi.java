@@ -6,9 +6,7 @@ import com.thoughtworks.ketsu.web.jersey.Routes;
 import com.thoughtworks.ketsu.web.validators.NotNullValidator;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -28,5 +26,12 @@ public class ProductApi {
         productRepository.save(prodInfo);
 
         return Response.created(routes.productUrl(Long.valueOf(prodInfo.get("id").toString()))).build();
+    }
+
+    @Path("{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Product getOne() {
+        return new Product();
     }
 }

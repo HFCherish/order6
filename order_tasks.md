@@ -18,7 +18,7 @@
 	2. should have tried to search from database and should able to get a least one product if database is not empty (repo.findAll) --3 :: 2
 	3. should that one product's id are the same as expected (mapper-findAll) --3 :: 2
 	3. --------------------------------------------------
-	2. should the response body contains at least  one item info and contains right uri, name, description, price info (resource.get, record) --3
+	2. should the response body contains at least  one item info and contains right uri, name, description, price info (resource.get, record) --3 :: 2
 	4. should return empty when no products in db --1
 11. user register
 	11. should return 201 when register a new user (resource.post) --4
